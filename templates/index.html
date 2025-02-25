@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeedBack</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/pagina_principal.css') }}">
+
+</head>
+<body>
+    <section>
+        <main>
+            <form class="formulario" action="/post/mensagem" method="POST">
+                <H1>FEEDBACKS MASTERED</H1>
+                <span>Usuario</span>
+                <input class="inputNome" nome="nome_user" type="text">
+                
+                <span>Comentario</span>
+                <input class="inputComentario" nome="comentario" type="text">
+                
+                <button>Enviar</button>    
+            </form>
+        </main>
+        
+    </section>
+</body>
+</html>
