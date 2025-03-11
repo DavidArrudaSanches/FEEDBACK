@@ -15,13 +15,24 @@
             <form class="formulario" action="/post/mensagem" method="POST">
                 <H1>FEEDBACKS MASTERED</H1>
                 <span>Usuario</span>
-                <input class="inputNome" nome="nome_user" type="text">
+                <input class="inputNome" name="nome_user" type="text">
                 
                 <span>Comentario</span>
-                <input class="inputComentario" nome="comentario" type="text">
+                <input class="inputComentario" name="comentario" type="text">
                 
                 <button>Enviar</button>    
             </form>
+
+            <div class="exibe_comentario" name="mensagem">
+                {%for mensagem in mensagens%}
+                <div class="mensagem">
+                    <strong>
+                        {{mensagem.usuario}} ({{mensagem.data_hora}})
+                    </strong>
+                    <p>{{mensagem.mensagem}}</p>
+                </div>
+                {% endfor %}
+            </div>
         </main>
         
     </section>

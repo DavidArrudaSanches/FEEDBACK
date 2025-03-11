@@ -28,3 +28,33 @@ main{
     border-radius: 15px;
     border-color: aliceblue;
 }
+
+.exibe_comentario{
+    width: 700px;
+    height: 400px;
+
+    background-color: white;
+
+    border-radius: 15px;
+    border-color: black;
+
+    display: flex;
+}
+
+.usuario{
+    
+    width: 100px;
+    height: 40px;
+
+    
+    background-color: rgb(196, 170, 135);
+}
+
+.comentario{
+    
+    width: 100px;
+    height: 40px;
+
+    border-color: black;
+    background-color: rgb(196, 170, 135);
+}
