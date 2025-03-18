@@ -32,7 +32,7 @@ class Mensagem:
 
         sql="""Select cod_comentario, 
                 nome as usuario,
-                comentario as mensagem, data_hora from tb_comentarios"""
+                comentario as mensagem, data_hora, curtidas from tb_comentarios"""
         
         cursor.execute(sql)
 

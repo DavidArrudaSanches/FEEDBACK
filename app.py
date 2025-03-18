@@ -8,7 +8,7 @@ app= Flask(__name__)
 @app.route("/")
 def pagina_principal():
     mensagem = Mensagem.recuperar_mensagens()
-    like = Mensagem.mostrar_curtidas()    
+   
     return render_template ("index.html", mensagem=mensagem)
 
 @app.route("/post/mensagem", methods=["POST"])
@@ -25,6 +25,10 @@ def post_mensagem():
 def delete_mensagem(codigo):
     Mensagem.deletar_mensagem(codigo)
     return redirect("/")
+
+@app.route("/put/mensagem/adicionar/curtida/<codigo>")
+def adicionar_curtida(codigo):
+    return redirect("/") 
 
 
 
