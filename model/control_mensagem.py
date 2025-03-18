@@ -30,7 +30,8 @@ class Mensagem:
 
         cursor= conexao.cursor(dictionary=True)
 
-        sql="""Select nome as usuario,
+        sql="""Select cod_comentario, 
+                nome as usuario,
                 comentario as mensagem, data_hora from tb_comentarios"""
         
         cursor.execute(sql)
@@ -40,5 +41,20 @@ class Mensagem:
         conexao.close()
 
         return resultado
+
+    def deletar_mensagem(codigo):
+        
+        conexao= Conexao.criar_conexao()
+        
+        cursor= conexao.cursor()
     
-    
+        sql="""delete from tb_comentarios where cod_comentario= %s"""
+
+        valores=(codigo,)
+        
+        cursor.execute(sql,valores)
+
+        conexao.commit()
+
+        conexao.close()
+
