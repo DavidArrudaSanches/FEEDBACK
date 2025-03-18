@@ -1,7 +1,8 @@
 body{
     background-color: rgb(0, 0, 0);
     display: flex;
-
+    font-family: "Roboto Condensed", sans-serif;
+    overflow: hidden;
 }
 
 section{
@@ -15,6 +16,7 @@ section{
     overflow: hidden;
 
     background-color: rgb(155, 142, 124);
+    
 }
 
 main{
@@ -27,34 +29,66 @@ main{
 
     border-radius: 15px;
     border-color: aliceblue;
+    
+}
+
+.botao {
+    padding: 10px 20px;   
+    margin-top: 20px; 
+    
+    
+    background-color: #4d4c4c; 
+    border: 2px solid #202020; 
+    border-radius: 5px;     
+    
+    color: white;     
+          
+    font-size: 16px;        
+    cursor: pointer;       
+    transition: background-color 0.3s, border-color 0.3s; 
+}
+
+.botao:hover{
+    background-color: #555;
+    border-color: #666; 
+}   
+
+.btn-del{
+    background-color: #4d4c4c; 
+    border: 2px solid #202020; 
+    border-radius: 5px; 
+
+    color: white; 
+}
+
+.like{ 
+    border-radius: 5px; 
+}
+
+.unlike{
+    border-radius: 5px; 
 }
 
 .exibe_comentario{
-    width: 700px;
-    height: 400px;
+    width: 1200px;
+    height: 700px;
 
     background-color: white;
 
     border-radius: 15px;
     border-color: black;
 
-    display: flex;
+    display: flex;   
+    flex-direction: column-reverse;
+
+    overflow: auto;
 }
 
-.usuario{
-    
-    width: 100px;
-    height: 40px;
 
-    
-    background-color: rgb(196, 170, 135);
-}
-
-.comentario{
-    
-    width: 100px;
-    height: 40px;
-
-    border-color: black;
-    background-color: rgb(196, 170, 135);
-}
+.mensagem {
+    border: 1px solid #ccc;  /* Borda fina de cor cinza */
+    padding: 10px;            /* Adiciona um espaçamento interno (margem interna) */
+    margin-bottom: 10px;      /* Espaço entre as mensagens */
+    border-radius: 5px;       /* Bordas arredondadas (opcional) */
+    background-color: #f9f9f9; /* Cor de fundo da mensagem (opcional) */
+  }

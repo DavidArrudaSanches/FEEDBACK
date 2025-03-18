@@ -8,6 +8,11 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='/pagina_principal.css') }}">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
     <section>
@@ -20,17 +25,24 @@
                 <span>Comentario</span>
                 <input class="inputComentario" name="comentario" type="text">
                 
-                <button>Enviar</button>    
+                <button class="botao">Enviar</button>    
             </form>
 
             <div class="exibe_comentario" name="mensagem">
-                {%for mensagem in mensagens%}
+                {% for mensagens in mensagem %}
                 <div class="mensagem">
+                    
                     <strong>
-                        {{mensagem.usuario}} ({{mensagem.data_hora}})
+                        {{mensagens.usuario}} ({{mensagens.data_hora}})
                     </strong>
-                    <p>{{mensagem.mensagem}}</p>
+                    <p>{{mensagens.mensagem}}</p>
+                    
+                    <a href=""><button class="btn-del">Delete</button> </a>
+                    <a href=""><button class="like">👍</button></a>
+                    <a href=""><button class="unlike">👎</button></a>
                 </div>
+
+
                 {% endfor %}
             </div>
         </main>
