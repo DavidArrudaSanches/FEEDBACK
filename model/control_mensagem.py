@@ -58,3 +58,32 @@ class Mensagem:
 
         conexao.close()
 
+    def like_mensg(codigo):
+        conexao= Conexao.criar_conexao()
+        
+        cursor= conexao.cursor()
+    
+        sql="""UPDATE tb_comentarios SET curtidas = curtidas + 1 WHERE cod_comentario = %s"""
+
+        valores=(codigo,)
+        
+        cursor.execute(sql,valores)
+
+        conexao.commit()
+
+        conexao.close()
+
+    def unlike_mensg(codigo):
+        conexao= Conexao.criar_conexao()
+        
+        cursor= conexao.cursor()
+    
+        sql="""UPDATE tb_comentarios SET curtidas = curtidas - 1 WHERE cod_comentario = %s"""
+
+        valores=(codigo,)
+        
+        cursor.execute(sql,valores)
+
+        conexao.commit()
+
+        conexao.close()

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina-Inicial</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='/pagina_inicial.css') }}">
+
+</head>
+<body>
+    <section>
+        <main>
+            <header>
+                <H1>FEEDBACKS MASTERED</H1>
+            </header>
+            <form class="formulario" action="/post/mensagem" method="POST">
+                <span>Login</span>
+                <input class="inputNome" name="login_user" type="text">
+                
+                <span>Nome</span>
+                <input type="text" class="inputNome" name="name_user">
+
+                <span>Senha</span>
+                <input class="inputSenha" name="senha" type="text">
+                
+                <button class="botao">Enviar</button>    
+            </form>
+        </main>
+    </section>
+    
+</body>
+</html>

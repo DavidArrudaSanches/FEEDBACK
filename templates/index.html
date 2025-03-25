@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FeedBack</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='/pagina_principal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/pagina_comentarios.css') }}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,8 +38,8 @@
                     <p>{{mensagens.mensagem}}</p>
                     
                     <a href="/delete/mensagem/{{mensagens.cod_comentario}}"><button class="btn-del">Delete</button> </a>
-                    <a href=""><button class="like">👍 </button></a>
-                    <a href=""><button class="unlike">👎 </button></a>
+                    <a href="/put/mensagem/adicionar/curtida/{{mensagens.cod_comentario}}"><button class="like">👍 </button></a>
+                    <a href="/put/mensagem/remover/curtida/{{mensagens.cod_comentario}}"><button class="unlike">👎 </button></a>
                     <a href=""><button> CURTIDAS: {{mensagens.curtidas}} </button></a>
                 </div>
 
