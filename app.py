@@ -43,7 +43,7 @@ def remover_curtida(codigo):
 def pagina_cadastro():
     return render_template("paginainicial.html")
 
-@app.route("/cadastro", methods=["POST"])
+@app.route("/post/cadastro", methods=["POST"])
 def cadastro_user():
     login= request.form.get("login_user")
     nome = request.form.get("name_user")
@@ -51,7 +51,11 @@ def cadastro_user():
 
     Usuario.cadastrar(login,senha,nome)
 
-    return redirect("/pagina-mensg")
+    return redirect("/pagina-login")
 
+
+@app.route("/pagina-login")
+def login_user():
+    return render_template("Paginalogin.html")
 
 app.run(debug=True)
