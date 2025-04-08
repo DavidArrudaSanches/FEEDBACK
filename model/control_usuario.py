@@ -1,6 +1,7 @@
 from hashlib import sha256
 import mysql.connector
 from data.conexao import Conexao
+from flask import session
 class Usuario:
     
     def cadastrar(login, senha, nome):
@@ -24,19 +25,38 @@ class Usuario:
 
         cursor.close()
         conex.close()
-    def login(login,senha):
 
-        conexao = Conexao.criar_conexao()
 
-        cursor = conexao.cursor()
+    def validar_login(login, senha):
+        
+        senha=sha256(senha.encode()).hexdigest()
 
-        sql = """SELECT * FROM tb_usuarios
-                    WHERE login = %s
-                    and binary senha = %s"""
+        conn = Conexao.criar_conexao()
 
-        valores = (login,senha)
 
-        cursor.execute(sql)
+        cursor = conn.cursor(dictionary=True)
 
-        resultado = cursor.fetchone
+
+        sql = "SELECT nome, login, senha FROM tb_usuarios WHERE login = %s AND senha = %s"
+
+
+        valores = (login, senha)
+
+
+        cursor.execute(sql, valores)
+
+
+        resultado = cursor.fetchone()
+
+
+        cursor.close()
+        conn.close()
+
+
+        if resultado:
+            session['usuario'] = resultado['login']
+            session['nome_usuario'] = resultado['nome']
+            return True
+        else:
+            return False
 

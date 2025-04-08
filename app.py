@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 import datetime
 import mysql.connector
 from data.conexao import Conexao
@@ -9,10 +9,13 @@ app= Flask(__name__)
 
 @app.route("/pagina-mensg")
 def pagina_principal():
-    mensagem = Mensagem.recuperar_mensagens()
-   
-    return render_template ("index.html", mensagem=mensagem)
-
+    if "usuario" in session:
+        mensagem = Mensagem.recuperar_mensagens()
+    
+        return render_template ("index.html", mensagem=mensagem)
+    else:
+        return redirect("/")
+    
 @app.route("/post/mensagem", methods=["POST"])
 def post_mensagem():
 
@@ -22,6 +25,7 @@ def post_mensagem():
     Mensagem.cadastrar_mensagem(usuario,mensagem)
 
     return redirect("/pagina-mensg")
+
 
 @app.route("/delete/mensagem/<codigo>")
 def delete_mensagem(codigo):
@@ -58,4 +62,15 @@ def cadastro_user():
 def login_user():
     return render_template("Paginalogin.html")
 
-app.run(debug=True)
+@app.route("/post/login", methods=["POST"])
+def login():
+    login= request.form.get("user_login")
+    senha= request.form.get("senha_login")
+
+    Usuario.validar_login(login,senha)
+
+    return redirect ("/pagina-mensg")
+
+
+if __name__=="__main__":
+    app.run(host="0.0.0.0", port=8080)
