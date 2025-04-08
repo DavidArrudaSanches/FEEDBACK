@@ -7,6 +7,8 @@ from model.control_usuario import Usuario
 
 app= Flask(__name__)
 
+app.secret_key="sesisenai"
+
 @app.route("/pagina-mensg")
 def pagina_principal():
     if "usuario" in session:
