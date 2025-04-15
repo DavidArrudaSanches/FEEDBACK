@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, jsonify
 import datetime
 import mysql.connector
 from data.conexao import Conexao
@@ -72,6 +72,16 @@ def login():
     Usuario.validar_login(login,senha)
 
     return redirect ("/pagina-mensg")
+
+@app.route("/api/get/mensagens")
+def api_get_mensagens():
+    mensagem = Mensagem.recuperar_mensagens()
+    return jsonify(mensagem)
+
+@app.route("/api/get/ultimamensagem/<usuario>")
+def api_get_ultima_mensagem(usuario):
+    mensagem= Mensagem.ultima_mensagem(usuario)
+    return jsonify (mensagem)
 
 
 if __name__=="__main__":

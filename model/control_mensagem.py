@@ -87,3 +87,22 @@ class Mensagem:
         conexao.commit()
 
         conexao.close()
+
+    def ultima_mensagens():
+        conexao=Conexao.criar_conexao()
+
+        cursor= conexao.cursor(dictionary=True)
+
+        sql="""Select cod_comentario, 
+                where nome= %s,
+                comentario as mensagem, data_hora, curtidas from tb_comentarios"""
+        
+        valores=()
+
+        cursor.execute(sql)
+
+        resultado=cursor.fetchall()
+        
+        conexao.close()
+
+        return resultado
